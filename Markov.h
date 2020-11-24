@@ -2,6 +2,8 @@
 #define MARKOV_H
 #include <vector>
 #include <string>
+#include <stdio.h>
+#include <stdlib.h>
 using namespace std;
 
 const unsigned int CHUNK_LENGTH = 2;
@@ -24,25 +26,26 @@ class Markov {
                 /**
                  * Total number of links
                  */
-                int linkCount;
-
-                /**
-                 * Number of links to each child
-                 */
-                vector<Node*> childNodes;
+                unsigned int linkCount;
 
                 /**
                  * Pointer to the node's children
                  */
                 vector<Node*> childNodes;
 
+                unsigned int numChildren;
+
+                void printChildren();
+
+                unsigned int getChildIndex(string ab);
+
                 /**
                  * Node constructor, which initializes everything
                  */
-                Node(string ab) : data(ab), linkCount(0) {}
+                Node(string ab) : data(ab), linkCount(0), numChildren(0) {}
 
                 
-                void connectTo(Node*);
+                void connectTo(Node* node);
 
                 /**
                  * Find the successor of this Node
@@ -64,7 +67,7 @@ class Markov {
 
         Node* getRoot();
 
-        Node* fetchNode(string ab);
+        Node* fetchNode(string &ab);
 
         /**
          * Remove all elements from the Markov network
