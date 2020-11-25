@@ -1,5 +1,8 @@
 # language-generator
 
+This is how to compile the program: g++ -Wall -pedantic -g -O0 -std=c++11 -o Test Test.cpp Markov.cpp
+This is how to run the program: ./Text [input file] [number of iterations]
+
 Here are some outputs based on input text
 
 Constitution with chunk size = 3;    
